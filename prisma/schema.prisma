@@ -41,7 +41,7 @@ model User {
   id            String    @default(cuid()) @id
   name          String?
   email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  createdAt     DateTime  @default(now())
   posts         Post[]
   comments      Comment[]
   votes         Vote[]
