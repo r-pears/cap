@@ -63,7 +63,6 @@ model Post {
   id        String   @default(cuid()) @id
   title     String
   content   String
-  published Boolean @default(false)
   author    User   @relation(fields: [authorId], references: [id])
   authorId  String
   image     String
@@ -75,7 +74,6 @@ model Comment {
   id        String   @default(cuid()) @id
   title     String
   content   String
-  published Boolean @default(false)
   author    User   @relation(fields: [authorId], references: [id])
   authorId  String
   post      Post   @relation(fields: [postId], references: [id])
