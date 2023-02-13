@@ -10,7 +10,7 @@ const NewPost = () => {
       <h1>Add your own Post</h1>
       {(session && session.user) ?
         <>
-          <Form username={session.user.name} />
+          <Form />
         </>
         :
         <>

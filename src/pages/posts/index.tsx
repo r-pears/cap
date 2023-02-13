@@ -12,6 +12,7 @@ const Posts = () => {
       .then((data) => {
         setData(data)
         setLoading(false)
+        console.log(data)
       })
   }, [])
 
