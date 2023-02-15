@@ -15,7 +15,10 @@ export default async function getAllPosts(
     const post = await prisma.post.findUnique({
       where: {
         id: id
-      }
+      },
+      include: {
+        comments: true,
+      },
     })
     res.status(200).json(post)
   } catch (error) {
