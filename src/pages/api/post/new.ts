@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { title, content, image, description } = req.body;
+  const { title, content, image } = req.body;
 
   console.log(req.body)
 

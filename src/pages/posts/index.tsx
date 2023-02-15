@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
 
 const Posts = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(Array<any>)
   const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -12,10 +12,8 @@ const Posts = () => {
       .then((data) => {
         setData(data)
         setLoading(false)
-        console.log(data)
       })
   }, [])
-
   if (isLoading) return <h2>Loading...</h2>
   if (!data) return <h2>No available posts.</h2>
 
@@ -23,7 +21,35 @@ const Posts = () => {
     <>
       <h1>All available posts</h1>
       <Link href={`/posts/new`}><h2>Write new post</h2></Link>
-
+      <div>
+        {data.map((post: any, index: number) => {
+          if (index === 0) {
+            return (
+              <div key={post.id}>
+                <Link
+                  href={{
+                    pathname: '/posts/' + post.id,
+                  }}
+                >
+                  <h2>{post.title}</h2>
+                </Link>
+              </div>
+            );
+          } else {
+            return (
+              <div key={post.id}>
+                <Link
+                  href={{
+                    pathname: '/posts/' + post.id,
+                  }}
+                >
+                  <h2>{post.title}</h2>
+                </Link>
+              </div>
+            )
+          }
+        })}        
+      </div>
     </>
   )
 }
