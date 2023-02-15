@@ -19,6 +19,6 @@
       "tsx/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/api/post/[postId].js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/api/post/[postId].js", "src/pages/api/post/[post"],
   "exclude": ["node_modules"]
 }

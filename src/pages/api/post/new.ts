@@ -13,8 +13,6 @@ export default async function handler(
 ) {
   const { title, content, image } = req.body;
 
-  console.log(req.body)
-
   const session = await getSession({ req });
   if (session && session.user && session?.user.email) {
     const result = await prisma.post.create({
