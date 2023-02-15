@@ -33,7 +33,7 @@ const Post = () => {
   }, [])
 
   if (isLoading) return <h2>Loading...</h2>
-  if (!data) return <h2>No available posts.</h2>
+  if (!data) return <h2>Cannot find the post.</h2>
 
   return (
     <div>
