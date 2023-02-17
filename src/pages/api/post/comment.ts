@@ -11,20 +11,27 @@ export default async function getAllPosts(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { id, content, title } = req.body;
+  
   if (req.method === 'POST') {
-    const { id, content, title } = req.body;
-
     const session = await getSession({ req });
     if (session && session.user && session?.user.email) {
       const result = await prisma.comment.create({
         data: {
           title: title,
-          post: id,
           content: content,
+          post: { connect: { id: id } },
           author: { connect: { email: session?.user?.email } },
         },
       });
       res.json(result);
     }
+  } else if (req.method === 'GET') {
+    const comments = await prisma.comment.findMany({
+      where: {
+        postId: id
+      },
+    })
+    res.json(comments);
   }
 }

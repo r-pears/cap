@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
+import CommentForm from 'tsx/components/CommentForm';
 
 const Post = () => {
   const [data, setData] = useState({} as any)
   const [isLoading, setLoading] = useState(false)
+  const [comments, setComments] = useState(Array<any>)
+
   const router = useRouter()
   const { postId } = router.query
 
@@ -26,10 +29,11 @@ const Post = () => {
       }
       const response = await fetch(endpoint, options)
       const result = await response.json()      
-      setLoading(false)
       setData(result)
-      console.log(result)
-      console.log(result.comments.length)
+      setComments(result.comments)
+      if (result.comments !== undefined) {
+        setLoading(false)        
+      }
     }
     getPost();
   }, [postId])
@@ -42,10 +46,13 @@ const Post = () => {
       <h1>{data.title}</h1>
       <p>{data.content}</p>
 
+      <h3>Add your own comment</h3>
+
+      <CommentForm />
+
       <div>
-        {data.comments.length > 0 ?
           <>
-            {data.comments.map((comment: any) => {
+            {comments.map((comment: any) => {
               return (
                 <div key={comment.id}>
                   {comment}
@@ -53,15 +60,12 @@ const Post = () => {
               )
             })}
           </>
-          :
-          <h4>No comments</h4>
-        }
+
       </div>
 
       
     </div>
   )
 }
-
 
 export default Post;
