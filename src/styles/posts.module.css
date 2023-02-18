@@ -17,3 +17,33 @@
 .newpost:hover {
   color: #888;
 }
+
+.posts {
+  width: calc(100% - 80px);
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+
+.posts:hover {
+  border: 1px solid #eaeaea;
+}
+
+.firsttitle {
+  font-size: 3em;
+}
+
+.firstauthor {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.poststitle {
+  font-size: 1.8em;
+}
+
+.postsauthor {
+  font-size: 0.7em;
+  font-style: italic;
+}

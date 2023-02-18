@@ -16,7 +16,7 @@ const Posts = () => {
         setLoading(false)
       })
   }, [])
-  
+
   if (isLoading) return <h2>Loading...</h2>
   if (!data) return <h2>No available posts.</h2>
 
@@ -26,10 +26,11 @@ const Posts = () => {
       <Link className={posts.links} href={`/posts/new`}><h2 className={posts.newpost}>Write new post</h2></Link>
       <div>
         {data.map((post: any, index: number) => {
+          console.log(post)
           if (index === 0) {
             return (
-              <div className={posts.firstpost} key={post.id}>
-                <Link
+              <div className={posts.posts} key={post.id}>
+                <Link className={posts.links}
                   href={{
                     pathname: '/posts/' + post.id,
                   }}
@@ -41,14 +42,15 @@ const Posts = () => {
             );
           } else {
             return (
-              <div key={post.id}>
+              <div className={posts.posts} key={post.id}>
                 <Link
+                  className={posts.links}
                   href={{
                     pathname: '/posts/' + post.id,
                   }}
                 >
-                  <h2>{post.title}</h2>
-                  <h4>{post.author.name}</h4>
+                  <h2 className={posts.poststitle}>{post.title}</h2>
+                  <h4 className={posts.postsauthor}>{post.author.name}</h4>
                 </Link>
               </div>
             )
