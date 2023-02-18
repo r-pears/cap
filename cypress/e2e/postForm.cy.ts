@@ -4,3 +4,5 @@ describe('new post form', () => {
       .get('h1').contains('Add')
   })
 })
+
+export {}

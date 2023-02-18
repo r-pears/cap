@@ -5,3 +5,5 @@ describe('navigation', () => {
       .get('[data-cy=nav-posts]').click()
   })
 })
+
+export { }

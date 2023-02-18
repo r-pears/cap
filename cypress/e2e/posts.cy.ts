@@ -4,3 +4,5 @@ describe('posts', () => {
       .get('h1').contains('All')
   })
 })
+
+export { }
