@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
-import CommentForm from 'tsx/components/CommentForm';
+import Form from 'tsx/components/Form';
 import { useSession, signIn } from "next-auth/react";
 import post from '../../../styles/post.module.css'
 
@@ -52,7 +52,7 @@ const Post = () => {
       <h3 className={post.addcomment}>Add your own comment</h3>
       {(session && session.user) ?
         <>
-          <CommentForm />
+          <Form commentForm={true} />
         </>
         :
         <>

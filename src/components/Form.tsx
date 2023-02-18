@@ -1,9 +1,14 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
-const Form = () => {
+interface ComponentProps {
+  commentForm: boolean
+}
+
+const Form = (props: ComponentProps) => {
   const [formError, setFormError] = useState(false);
   const router = useRouter();
+  const { postId } = router.query;
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
@@ -16,10 +21,11 @@ const Form = () => {
       const data = {
         title: event.target.title.value,
         content: event.target.content.value,
+        id: postId
       }
 
       const JSONdata = JSON.stringify(data)
-      const endpoint = '/api/post/new'
+      const endpoint = props.commentForm ? '/api/post/comment' : '/api/post/new';
 
       const options = {
         method: 'POST',
@@ -30,7 +36,7 @@ const Form = () => {
       }
       const response = await fetch(endpoint, options)
       const result = await response.json()
-      router.push('/posts')
+      props.commentForm ? router.reload() : router.push('/posts')
     }
   }
 
