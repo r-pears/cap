@@ -13,9 +13,6 @@ const Posts = () => {
         setData(data)
         setLoading(false)
       })
-      .catch(error => {
-      console.log(error)
-    })
   }, [])
 
   if (isLoading) return <h2>Loading...</h2>
