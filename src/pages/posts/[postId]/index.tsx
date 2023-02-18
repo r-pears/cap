@@ -56,7 +56,7 @@ const Post = () => {
         </>
         :
         <>
-          <h2 className={post.signin}>You have to be signed in to add your own comment</h2>
+          <h3 className={post.signin}>You have to be signed in to add your own comment</h3>
           <button  className={post.button} onClick={() => signIn()}>Sign in</button>    
         </>
       }
