@@ -65,7 +65,7 @@ model Post {
   content   String
   author    User   @relation(fields: [authorId], references: [id])
   authorId  String
-  image     String
+  image     String?
   comments  Comment[]
   votes     Vote[]
 }
