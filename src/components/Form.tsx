@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import form from './Form.module.css';
 
 interface ComponentProps {
   commentForm: boolean
@@ -41,20 +42,22 @@ const Form = (props: ComponentProps) => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <input type="text" id="title" name="title" onChange={() => setFormError(false)} />
+    <div>
+      <form className={form.postform} onSubmit={handleSubmit}>
+        <label className={form.label} htmlFor="title">Title</label>
+        <input className={form.input} type="text" id="title" name="title" onChange={() => setFormError(false)} />
 
-        <label htmlFor="content">Content</label>
-        <textarea id="content" name="content" onChange={() => setFormError(false)} />
+        <label className={form.label} htmlFor="content">Content</label>
+        <textarea className={props.commentForm ? form.commentinput : form.forminput} id="content" name="content" onChange={() => setFormError(false)} />
 
-        <button type="submit">Submit</button>
+        <div>
+          <button className={form.button} type="submit">Submit</button>
+        </div>
       </form>   
       {formError && 
-      <div>Form missing data</div>
+        <div className={form.error}>Form missing data.</div>
       }
-    </>
+    </div>
   )
 }
 
