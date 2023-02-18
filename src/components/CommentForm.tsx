@@ -32,6 +32,7 @@ const CommentForm = () => {
       }
       const response = await fetch(endpoint, options)
       const result = await response.json()
+      router.reload();
     }
   }
 
