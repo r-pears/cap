@@ -1,0 +1,19 @@
+.main {
+  padding: 40px;
+}
+
+.title {
+  font-size: 4em;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.newpost {
+  padding-top: 15px;
+}
+
+.newpost:hover {
+  color: #888;
+}

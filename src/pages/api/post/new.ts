@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { title, content, image } = req.body;
+  const { title, content } = req.body;
 
   const session = await getSession({ req });
   if (session && session.user && session?.user.email) {
@@ -19,8 +19,8 @@ export default async function handler(
       data: {
         title: title,
         content: content,
-        image: image,
         author: { connect: { email: session?.user?.email } },
+        image: '',
       },
     });
     res.json(result);    

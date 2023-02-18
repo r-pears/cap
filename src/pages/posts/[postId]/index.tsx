@@ -48,17 +48,6 @@ const Post = () => {
   return (
     <div>
       <h1>{data.title}</h1>
-      {data.image !== undefined &&
-        <> {data.image.includes('http') &&
-          <Image
-            src={data.image}
-            alt="post image"
-            width={450}
-            height={400}
-          />          
-        }
-        </>
-      }
       <p>{data.content}</p>
 
       <h3>Add your own comment</h3>

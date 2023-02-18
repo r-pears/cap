@@ -10,14 +10,11 @@ const Form = () => {
 
     if (event.target.title.value.length <= 0) {
       setFormError(true)
-    } else if (event.target.img.value.length <= 0) {
-      setFormError(true)
     } else if (event.target.content.value.length <= 0) {
       setFormError(true)
     } else {
       const data = {
         title: event.target.title.value,
-        image: event.target.img.value,
         content: event.target.content.value,
       }
 
@@ -42,9 +39,6 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" onChange={() => setFormError(false)} />
-
-        <label htmlFor="img">Image</label>
-        <input type="text" id="img" name="img" onChange={() => setFormError(false)} />
 
         <label htmlFor="content">Content</label>
         <textarea id="content" name="content" onChange={() => setFormError(false)} />
