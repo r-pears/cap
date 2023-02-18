@@ -1,0 +1,23 @@
+.main {
+  padding: 40px ;
+}
+
+.title {
+  font-size: 4em;
+}
+
+.content {
+  max-width: 750px;
+  padding: 20px 0;
+}
+
+.addcomment .signin {
+  padding: 15px 0;
+}
+
+.comment {
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  margin: 10px 0;
+}

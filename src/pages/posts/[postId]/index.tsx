@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import CommentForm from 'tsx/components/CommentForm';
 import { useSession, signIn } from "next-auth/react";
+import post from '../../../styles/post.module.css'
 
 const Post = () => {
   const [data, setData] = useState({} as any)
@@ -43,30 +44,31 @@ const Post = () => {
   if (isLoading) return <h2>Loading...</h2>
   if (!data) return <h2>Cannot find the post.</h2>
 
-  console.log(data)
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <p>{data.content}</p>
+    <div className={post.main}>
+      <h1 className={post.title}>{data.title}</h1>
+      <p className={post.content}>{data.content}</p>
 
-      <h3>Add your own comment</h3>
+      <h3 className={post.addcomment}>Add your own comment</h3>
       {(session && session.user) ?
         <>
           <CommentForm />
         </>
         :
         <>
-          <h2>You have to be signed in to add your own comment</h2>
-          <button onClick={() => signIn()}>Sign in</button>    
+          <h2 className={post.signin}>You have to be signed in to add your own comment</h2>
+          <button  className={post.button} onClick={() => signIn()}>Sign in</button>    
         </>
       }
 
       <div>
           <>
-            {comments.map((comment: any) => {
+          {comments.map((comment: any) => {
               return (
-                <div key={comment.id}>
-                  {comment.content}
+                <div className={post.comment} key={comment.id}>
+                  <h4>{comment.title}</h4>
+                  <p></p>
+                  <p>{comment.content}</p>
                 </div>
               )
             })}

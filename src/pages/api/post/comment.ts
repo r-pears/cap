@@ -29,8 +29,11 @@ export default async function getAllPosts(
   } else if (req.method === 'GET') {
     const comments = await prisma.comment.findMany({
       where: {
-        postId: id
+        postId: id,
       },
+      include: {
+        author: true
+      }
     })
     res.json(comments);
   }

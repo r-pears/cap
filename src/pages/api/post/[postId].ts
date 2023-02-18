@@ -18,7 +18,7 @@ export default async function getAllPosts(
       },
       include: {
         comments: true,
-        author:true,
+        author:true
       },
     })
     res.status(200).json(post)
