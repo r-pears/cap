@@ -8,8 +8,8 @@ const Navigation = () => {
 
   return (
     <div className={navigation.navbar}>
-      <Link href={`/`}>Home</Link>
-      <Link href={`/posts`}>Posts</Link>
+      <Link data-cy='nav-home' href={`/`}>Home</Link>
+      <Link data-cy='nav-posts' href={`/posts`}>Posts</Link>
       {!session ? (
         <button onClick={() => signIn()}>Sign in</button>
       ) : (
