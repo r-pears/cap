@@ -1,0 +1,26 @@
+.main {
+  padding: 40px;
+}
+
+.title {
+  font-size: 4em;
+}
+
+.subtitle {
+  font-size: 1.7em;
+  padding: 20px 0;
+  max-width: 750px;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.link {
+  padding: 10px 0;
+  color: #888;
+}
+
+.link:hover {
+  color: #eaeaea;
+}
