@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import CommentForm from 'tsx/components/CommentForm';
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from 'next/image'
 
 const Post = () => {
   const [data, setData] = useState({} as any)
@@ -43,9 +44,21 @@ const Post = () => {
   if (isLoading) return <h2>Loading...</h2>
   if (!data) return <h2>Cannot find the post.</h2>
 
+  console.log(data)
   return (
     <div>
       <h1>{data.title}</h1>
+      {data.image !== undefined &&
+        <> {data.image.includes('http') &&
+          <Image
+            src={data.image}
+            alt="post image"
+            width={450}
+            height={400}
+          />          
+        }
+        </>
+      }
       <p>{data.content}</p>
 
       <h3>Add your own comment</h3>

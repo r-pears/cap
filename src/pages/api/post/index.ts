@@ -10,7 +10,11 @@ export default async function getAllPosts(
 ) {
 
   try {
-    const posts = await prisma.post.findMany()
+    const posts = await prisma.post.findMany({
+      include: {
+        author: true
+      }
+    })
     res.status(200).json(posts)
   } catch (error) {
     console.log(`Error: ${error}`)

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Posts = () => {
   const [data, setData] = useState(Array<any>)
@@ -32,6 +33,18 @@ const Posts = () => {
                   }}
                 >
                   <h2>{post.title}</h2>
+                    {post.image !== undefined &&
+                      <> {post.image.includes('http') &&
+                        <Image
+                          src={post.image}
+                          alt="post image"
+                          width={450}
+                          height={400}
+                        />          
+                      }
+                      </>
+                    }
+                  <h4>{post.author.name}</h4>
                 </Link>
               </div>
             );
@@ -44,6 +57,7 @@ const Posts = () => {
                   }}
                 >
                   <h2>{post.title}</h2>
+                  <h4>{post.author.name}</h4>
                 </Link>
               </div>
             )
