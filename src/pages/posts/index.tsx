@@ -4,16 +4,18 @@ import posts from '../../styles/posts.module.css'
 
 const Posts = () => {
   const [data, setData] = useState(Array<any>)
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
     fetch('/api/post')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
         setLoading(false)
       })
+      .catch(error => {
+      console.log(error)
+    })
   }, [])
 
   if (isLoading) return <h2>Loading...</h2>
