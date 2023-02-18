@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import CommentForm from 'tsx/components/CommentForm';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Post = () => {
   const [data, setData] = useState({} as any)
@@ -9,6 +10,7 @@ const Post = () => {
 
   const router = useRouter()
   const { postId } = router.query
+  const { data: session } = useSession();
 
   useEffect(() => {
     setLoading(true)
@@ -47,15 +49,23 @@ const Post = () => {
       <p>{data.content}</p>
 
       <h3>Add your own comment</h3>
-
-      <CommentForm />
+      {(session && session.user) ?
+        <>
+          <CommentForm />
+        </>
+        :
+        <>
+          <h2>You have to be signed in to add your own comment</h2>
+          <button onClick={() => signIn()}>Sign in</button>    
+        </>
+      }
 
       <div>
           <>
             {comments.map((comment: any) => {
               return (
                 <div key={comment.id}>
-                  {comment}
+                  {comment.content}
                 </div>
               )
             })}
