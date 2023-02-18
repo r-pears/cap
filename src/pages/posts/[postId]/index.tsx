@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import CommentForm from 'tsx/components/CommentForm';
-import { useSession, signIn, signOut } from "next-auth/react";
-import Image from 'next/image'
+import { useSession, signIn } from "next-auth/react";
 
 const Post = () => {
   const [data, setData] = useState({} as any)
